@@ -12,7 +12,16 @@ describe('Deleting a user', () => {
 
     it('model instance remove', (done) => {
         joe.remove()
-            .then(() => User.findOne({ name: 'Joe'}))
+            .then(() => User.findOne({ name: 'Joe' }))
+            .then((user) => {
+                assert(user === null);
+                done();
+            });
+    });
+
+    it('class method remove', (done) => {
+        User.remove({ name: 'Joe' })
+            .then(() => User.findOne({ name: 'Joe' }))
             .then((user) => {
                 assert(user === null);
                 done();
