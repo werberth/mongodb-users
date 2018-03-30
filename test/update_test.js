@@ -5,7 +5,7 @@ describe('Updating records', () => {
     let joe;
 
     beforeEach((done) => {
-        joe = new User({ name: 'Joe' });
+        joe = new User({ name: 'Joe', postCount: 1 });
         joe.save()
             .then(() => done());
     });
